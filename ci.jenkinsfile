@@ -1,0 +1,16 @@
+pipeline {
+   agent any
+   stages {
+       stage('Repository'){
+           steps {
+               //git url: "https://github.com/jdluna/python-testing.git", branch: "master"
+               checkout scm
+           }
+       }
+       stage('Run Test'){
+           steps {
+               sh "cd 4-fake-delegation/ && python3 -m unittest -v test/CostoEnvioService.py "
+           }
+       }
+   }
+}
